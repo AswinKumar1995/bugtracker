@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div>
+        <div class="com-div">
+            <app-comments></app-comments>
+        </div>
+        <div class="des-div">
+            <div class="main-div card">
+                <mat-card class="z-depth center" flex="60">
+                    <div clas="card-header">
+                        <mat-card-title>
+                            {{ currentTitle }}
+                        </mat-card-title>
+                    </div>
+                    <mat-card-content>
+                        <mat-list>
+                            <mat-list-item>
+                                Description : {{currentDescription}}
+                            </mat-list-item>
+                            <mat-list-item>
+                                Assignee : {{this.currentTicket.assignee}}
+                            </mat-list-item>
+                            <mat-list-item>
+                                Reporter : {{this.currentTicket.reporter}}
+                            </mat-list-item>
+                            <mat-list-item>
+                                Status : {{currentTicket.status}}
+                            </mat-list-item>
+                            <mat-list-item *ngIf="currentAttachement != undefined">
+                                    Attachments : <a href={{currentAttachement}}>Click to View</a>
+                            </mat-list-item>
+                            <mat-list-item>
+                                Watcher <section class="example-section">
+                                    <mat-slide-toggle (change)="onChange(isChecked,currentTicket.ticketId)"
+                                        [(ngModel)]="isChecked" class="example-margin" value="isChecked" [color]="color"
+                                        [checked]="checked" [disabled]="disabled">
+                                    </mat-slide-toggle>
+                                </section>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <p
+                                    *ngIf="this.watcherNameArray.length != undefined && this.watcherNameArray != null">
+                                    Watchers : <span
+                                        *ngFor="let tag of this.watcherNameArray;let first = first;let last = last">{{tag}}{{last ? '':', '}}</span>
+                                </p>
+                            </mat-list-item>
+
+                        </mat-list>
+
+                    </mat-card-content>
+
+                    <mat-card-actions align="end">
+                        <!-- <button mat-raised-button color>Edit</button> -->
+                        <a mat-raised-button color="primary" [routerLink]="['/edit',currentTicketId]">Edit</a>
+                        <a mat-raised-button color="primary" (click)="goBackToPreviousPage()">Go Back</a>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row" style = "text-align: left">
+        <div class="colo-md-12">
+            <form #createTicketForm = "ngForm" (ngSubmit) = "editThisTicket()">
+                <div class=" form-group">
+                    <label>Ticket Title</label>
+                    <input type="text" name = "ticketTitle" [(ngModel)] = "currentTicket.title" #title = "ngModel" class=" form-control" placeholder="Enter the ticket title" required>
+                
+                </div>
+                <div [hidden]= "title.valid || title.pristine" class=" alert alert-danger ">
+                    ticket title is required
+                </div>
+                <div class=" form-group">
+                    <label>Description</label>
+                    <input type="text" name = "ticketDescription" [(ngModel)] = "currentTicket.description" #description = "ngModel" class=" form-control" placeholder=" Description" required>
+                </div>
+                <div class=" form-group">
+                    <label>Reporter</label>
+                    <!-- <input type="text" name = "ticketReporter" [(ngModel)] = "currentTicket.reporter" #reporter = "ngModel" class=" form-control" placeholder=" Reporter" required> -->
+                    <select name="ticketReporterId" [(ngModel)] = "currentTicket.reporterId"  #reporter = "ngModel" class=" form-control" id="reporterid"  required>
+                        <option *ngFor="let reporter of userAndIdArray;let i = index" [value]="reporter[1]"  >{{reporter[0]}}</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <label>Assignee</label>
+                    <!-- <input type="text" name = "ticketAssignee" [(ngModel)] = "currentTicket.assignee" #assignee = "ngModel" class=" form-control" placeholder=" Assignee" required> -->
+                    <select name="ticketAssigneeId" [(ngModel)] = "currentTicket.assigneeId"  #assignee = "ngModel" class=" form-control" id="assigneeid" required>
+                        <option *ngFor="let assignee of userAndIdArray" [value]="assignee[1]"  >{{assignee[0]}}</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <label>Status</label>
+                    <select name="ticketStatus" [(ngModel)] = "currentTicket.status"  #status = "ngModel" class=" form-control" id="statusId" required>
+                        <option *ngFor="let status of possibleStatuses" [value]="status" >{{status}}</option>
+                    </select>
+                </div>
+                <!-- <button mat-raised-button color="primary" type="submit" class=" btn btn-default" [disabled] = "!createTicketForm.form.valid">Edit this ticket </button> -->
+                 <label class="btn btn-default">
+                    <input type="file" (change)="selectFile($event)">
+                </label>
+                <br>
+                <br>
+                <button class="btn btn-success" type="submit" mat-raised-button [disabled]="!createTicketForm.form.valid">
+                    Edit</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>

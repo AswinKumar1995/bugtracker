@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row" style="text-align: left">
+        <div class="colo-md-12">
+            <form #createTicketForm="ngForm" (ngSubmit)="createTicket()">
+                <div class=" form-group">
+                    <label>Ticket Title</label>
+                    <input type="text" name="ticketTitle" [(ngModel)]="ticketTitle" #title="ngModel"
+                        class=" form-control" placeholder="Enter the ticket title" required>
+
+                </div>
+                <div [hidden]="title.valid || title.pristine" class=" alert alert-danger ">
+                    blog title is required
+                </div>
+                <div class=" form-group">
+                    <label>Description</label>
+                    <input type="text" name="ticketDescription" [(ngModel)]="ticketDescription" #description="ngModel"
+                        class=" form-control" placeholder=" Description" required>
+                </div>
+                <div class=" form-group">
+                    <label>Reporter</label>
+                    <select name="ticketReporterId" [(ngModel)]="ticketReporterId" #reporter="ngModel"
+                        class=" form-control" id="reporterId" required>
+                        <option *ngFor="let reporter of userAndIdArray" [value]="reporter[1]">{{reporter[0]}}</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <label>Assignee</label>
+                    <select name="ticketAssigneeId" [(ngModel)]="ticketAssigneeId" #assignee="ngModel"
+                        class=" form-control" id="assigneeId" required>
+                        <option *ngFor="let assignee of userAndIdArray" [value]="assignee[1]">{{assignee[0]}}</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <label>Status</label>
+                    <select name="ticketStatus" [(ngModel)]="ticketStatus" #status="ngModel" class=" form-control"
+                        id="statusId" required>
+                        <option *ngFor="let status of possibleStatuses" [value]="status">{{status}}</option>
+                    </select>
+                </div>
+                <label class="btn btn-default">
+                    <input type="file" (change)="selectFile($event)">
+                </label>
+                <br>
+                <br>
+                <button class="btn btn-success" type="submit" mat-raised-button [disabled]="!createTicketForm.form.valid" > 
+                   
+                    Create</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- (click)="upload()" -->

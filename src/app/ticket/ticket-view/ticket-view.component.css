@@ -1,0 +1,37 @@
+.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 10px;
+  }
+
+  .center{
+    width: 70%;
+    margin: 10px auto;
+    height: 20%;
+  }
+  
+  .main-div{
+    align-items: center;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .des-div{
+     margin-left: 60px;
+  }
+  .mat-card{
+    box-shadow: 0 0 10px grey;
+  }
+  .com-div{
+    width: 200px;
+    float: left;
+  }

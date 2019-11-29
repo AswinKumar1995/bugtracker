@@ -1,0 +1,12 @@
+.center{
+    width: 70%;
+    margin: 10px auto;
+    height: 20%;
+  }
+
+  .main-div{
+    align-items: center;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }

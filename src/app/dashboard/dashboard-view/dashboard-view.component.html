@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+<div class="searchdiv">
+  <div class="search-div">
+    <button (click)="createTicket()" matTooltip="Create New Ticket" mat-raised-button>
+      <mat-icon>add</mat-icon>Create
+    </button>
+    <button (click)="searchview()" style="margin-left: 20px;" matTooltip="Open Search View" mat-raised-button>
+      <mat-icon>search</mat-icon>Search View
+    </button>
+  </div>
+</div>
+
+<br>
+<div class="mat-elevation-z8 tablediv">
+  <mat-table [dataSource]="dataSource" class="center " matSort>
+    <!-- Position Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell mat-sort-header arrowPosition="before" *matHeaderCellDef> Status
+        <li style="margin-top: 30px;">
+          <mat-form-field class="filter" floatLabel="never">
+            <mat-label>Search</mat-label>
+            <input matInput [formControl]="statusFilter">
+          </mat-form-field>
+        </li>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell mat-sort-header arrowPosition="before" *matHeaderCellDef> Title
+        <li style="margin-top: 30px;">
+          <mat-form-field class="filter" floatLabel="never">
+            <mat-label>Search</mat-label>
+            <input matInput [formControl]="titleFilter">
+          </mat-form-field>
+        </li>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="reporter">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Reporter
+        <li style="margin-top: 30px;">
+          <mat-form-field class="filter" floatLabel="never">
+            <mat-label>Search</mat-label>
+            <input matInput [formControl]="reporterFilter">
+          </mat-form-field>
+        </li>
+
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.reporter}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="created">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Date
+        <li style="margin-top: 30px;">
+          <!-- <mat-form-field class="filter" floatLabel="never" >
+                <mat-label>Search</mat-label>
+                <input matInput [formControl]="createdFilter">
+              </mat-form-field> -->
+        </li>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.created | date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button (click)="logData(element)" matTooltip="View" mat-icon-button color="primary">
+          <mat-icon>launch</mat-icon>
+        </button>
+        <button (click)="editData(element)" mat-icon-button color="warn">
+          <mat-icon matTooltip="Edit">edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="loading">
+      <mat-footer-cell *matFooterCellDef colspan="6">
+        Loading Data ..
+      </mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="noData">
+      <mat-footer-cell *matFooterCellDef colspan="6">
+        No Data
+      </mat-footer-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
+    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(dataSource!=null && dataSource == undefined )}">
+    </mat-footer-row>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+  </mat-paginator>
+</div>
