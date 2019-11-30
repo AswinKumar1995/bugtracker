@@ -67,6 +67,10 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+
+  public goToPage(ticketId){
+    this.router.navigate(["/ticket",ticketId])
+  }
   public changeBadge():any{
     this.matBadge = 0 ;
     this.notificationHttpService.setNotificationSeen(this.userId).subscribe(

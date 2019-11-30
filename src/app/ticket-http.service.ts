@@ -9,8 +9,8 @@ import { Observable,Subject,throwError } from 'rxjs';
 export class TicketHttpService {
   public allTickets
   public currentTicket
-  // public baseUrl = "http://localhost:3000/api/v1/tickets"
-  public baseUrl = "http://api.kiddify.co.in/api/v1/tickets"
+ //public baseUrl = "http://localhost:3000/api/v1/tickets"
+   public baseUrl = "http://api.kiddify.co.in/api/v1/tickets"
   constructor(private _http:HttpClient) {
     console.log("ticket http constructor is called")
    }

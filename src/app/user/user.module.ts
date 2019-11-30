@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material/material.module';
 
 
+
 @NgModule({
   declarations: [LoginComponent, SignupComponent],
   imports: [

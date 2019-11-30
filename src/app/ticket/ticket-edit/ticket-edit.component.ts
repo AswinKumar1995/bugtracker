@@ -1,10 +1,11 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit,OnDestroy,ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketHttpService } from 'src/app/ticket-http.service';
 import { AppService } from 'src/app/app.service';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { NotificationsHttpService } from 'src/app/notifications-http.service';
 import { UploadService } from 'src/app/upload.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -35,7 +36,10 @@ export class TicketEditComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private router: Router,
     public ticketHttpService: TicketHttpService, private appService: AppService,
     public notificationHttpService:NotificationsHttpService,
-    public uploadService:UploadService
+    public uploadService:UploadService,
+    public toastr:ToastrService,
+    public vcr:ViewContainerRef
+
 
   ) { }
 
@@ -87,7 +91,7 @@ export class TicketEditComponent implements OnInit {
 
 
   public editThisTicket(): any {
-    this.upload()
+    
     this.currentTicket.assignee = this.getName(this.currentTicket.assigneeId)
     this.currentTicket.reporter = this.getName(this.currentTicket.reporterId)
     console.log("File Name in Edit getting stored")
@@ -99,7 +103,7 @@ export class TicketEditComponent implements OnInit {
     }
     this.ticketHttpService.editTicket(this.currentTicket.ticketId, this.currentTicket).subscribe(
       data => {
-        alert("Ticket edited successfully");
+        this.toastr.success("Ticket updated successfully")
         setTimeout(() => {
           this.router.navigate(["/ticket", this.currentTicket.ticketId]);
           Cookie.delete('fileLocation')
@@ -135,9 +139,13 @@ export class TicketEditComponent implements OnInit {
     }
   }
 
-  public upload() {
+  public upload() :any {
+   // this.toastr.warning("Please wait the file is loading..")
     const file = this.selectedFiles.item(0);
     let data = this.uploadService.uploadFile(file);
+    console.log("Upload completed")
+    this.toastr.success("File Upload Completed")
+    return true
     }
     
    public  selectFile(event) {

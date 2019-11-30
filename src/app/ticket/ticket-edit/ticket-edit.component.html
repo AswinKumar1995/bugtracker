@@ -40,6 +40,9 @@
                  <label class="btn btn-default">
                     <input type="file" (change)="selectFile($event)">
                 </label>
+                <button  color="accent" type = "button" mat-flat-button [disabled]="!selectedFiles" (click)="upload()">
+                Click to Upload</button>
+
                 <br>
                 <br>
                 <button class="btn btn-success" type="submit" mat-raised-button [disabled]="!createTicketForm.form.valid">

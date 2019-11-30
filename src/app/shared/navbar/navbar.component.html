@@ -7,7 +7,7 @@
       <mat-list>
           <button  (click)="changeBadge()" mat-button [matMenuTriggerFor]="menu" [matBadge]= "matBadge" [matBadgeHidden] ="matBadge === 0" matBadgePosition="after" matBadgeColor="warn" >Notifications</button>
           <mat-menu #menu="matMenu" >
-            <button [routerLink]="['/ticket',notify.ticketId]" mat-menu-item *ngFor="let notify of allNotifications" >
+            <button (click)="goToPage(notify.ticketId)" mat-menu-item *ngFor="let notify of allNotifications" >
               <h6>{{notify.notification}} with Ticket Id {{notify.ticketId}}</h6></button>
             <!-- <button [routerLink]="['/dashboard']" mat-menu-item>Notifaction 2</button> -->
           </mat-menu>

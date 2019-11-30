@@ -9,23 +9,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [TicketViewComponent, TicketCreateComponent, TicketEditComponent],
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forChild([
       {path:"ticket/:ticketId",component:TicketViewComponent},
       {path:"create",component:TicketCreateComponent},
       {path:"edit/:ticketId",component:TicketEditComponent}
     ]),
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot()
   ]
 })
 export class TicketModule { }

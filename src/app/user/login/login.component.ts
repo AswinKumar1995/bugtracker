@@ -54,11 +54,14 @@ export class LoginComponent implements OnInit {
          // after login go to dashboard
           this.router.navigate(["/dashboard"]);
         }
+        else if(apiResponse.status == 500){
+          this.toastr.warning("User Credentials are invalid")
+        }
         else {
           this.toastr.error(apiResponse.message)
         }
       },(err) => {
-        this.toastr.error("some error received");
+        this.toastr.error("User Credentials are invalid");
       })
 
     }
