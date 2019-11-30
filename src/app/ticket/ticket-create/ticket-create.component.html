@@ -10,7 +10,7 @@
 
                 </div>
                 <div [hidden]="title.valid || title.pristine" class=" alert alert-danger ">
-                    blog title is required
+                    ticket title is required
                 </div>
                 <div class=" form-group">
                     <label>Description</label>
@@ -41,11 +41,13 @@
                 <label class="btn btn-default">
                     <input type="file" (change)="selectFile($event)">
                 </label>
-                <br>
-                <br>
-                <button class="btn btn-success" type="submit" mat-raised-button [disabled]="!createTicketForm.form.valid" > 
-                   
-                    Create</button>
+                <button  color="accent" type = "button" mat-flat-button [disabled]="!selectedFiles" (click)="upload()">
+                    Click to Upload</button>
+    
+                    <br>
+                    <br>
+                    <button class="btn btn-success" type="submit" mat-raised-button [disabled]="!createTicketForm.form.valid">
+                        Create</button>
             </form>
 
         </div>

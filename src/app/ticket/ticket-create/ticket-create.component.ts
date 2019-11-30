@@ -72,7 +72,6 @@ export class TicketCreateComponent implements OnInit {
     
   }
   public createTicket():any {
-    this.upload()
     this.ticketReporter = this.getName(this.ticketReporterId)
     this.ticketAssignee = this.getName(this.ticketAssigneeId)
     console.log("Ticket getting created")
@@ -140,10 +139,8 @@ export class TicketCreateComponent implements OnInit {
    public upload() {
     const file = this.selectedFiles.item(0);
     let data = this.uploadService.uploadFile(file);
-    // console.log(data)
-    // console.log("File Locations")
-    // console.log(data["Location"])
-    // this.ticketAttachments = data["Location"]
+    this.toastr.success("File uploaded successfully")
+   
     }
     
    public  selectFile(event) {
