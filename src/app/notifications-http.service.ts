@@ -9,7 +9,7 @@ export class NotificationsHttpService {
   public allNotifications
   public currentNotification
  // public baseUrl = "http://localhost:3000/api/v1/notifications"
-   public baseUrl = "http://api.kiddify.co.in/api/v1/notifications"
+   public baseUrl = "*****"
 
   constructor(private _http:HttpClient) {
     console.log("nottification http called")
