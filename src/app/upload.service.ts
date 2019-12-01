@@ -21,13 +21,13 @@ export class UploadService {
     const contentType = file.type;
     const bucket = new S3(
           {
-              accessKeyId: 'AKIAQSIVMUQVBCC6K2VY',
-              secretAccessKey: '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',
-              region: 'ap-south-1'
+              accessKeyId: '****',
+              secretAccessKey: '****',
+              region: '****'
           }
       );
       const params = {
-          Bucket: 'edwisor-aswinkumar-bucket',
+          Bucket: '****',
           Key: this.FOLDER + file.name,
           Body: file,
           ACL: 'public-read',
