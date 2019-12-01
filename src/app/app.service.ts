@@ -8,7 +8,7 @@ import {HttpClient,HttpHeaders, HttpParams, HttpErrorResponse, HttpBackend} from
 })
 export class AppService {
   // private url = "http://localhost:3000";
-  private url = "http://api.kiddify.co.in";
+  private url = "8****";
   constructor(private http:HttpClient) { }
 
   public getUserInfoFromLocalStorage = () => {
