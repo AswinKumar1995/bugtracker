@@ -10,7 +10,7 @@ export class CommentHttpService {
   public allComments
   public currentComments
 //public baseUrl = "http://localhost:3000/api/v1/comments"
-    public baseUrl = "http://api.kiddify.co.in/api/v1/comments"
+    public baseUrl = "*****"
 
   constructor(private _http:HttpClient) { 
     console.log("comment http called")
