@@ -8,6 +8,7 @@ import { UploadService } from 'src/app/upload.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NotificationsHttpService } from 'src/app/notifications-http.service';
 import { ToastrService } from 'ngx-toastr';
+import { CKEditor4 } from 'ckeditor4-angular';
 
 
 
@@ -165,16 +166,13 @@ export class TicketCreateComponent implements OnInit {
         )
       }
     }
+
+    public onChange( event: CKEditor4.EventInfo ) {
+      // console.log( );
+      this.ticketDescription = event.editor.getData() 
+  }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   }
  
 

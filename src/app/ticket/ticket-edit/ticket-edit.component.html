@@ -13,8 +13,9 @@
                     ticket title is required
                 </div>
                 <div class=" form-group">
-                    <label>Description</label>
-                    <input type="text" name = "ticketDescription" [(ngModel)] = "currentTicket.description" #description = "ngModel" class=" form-control" placeholder=" Description" required>
+                   <label>Description</label>
+                   <!-- <input type="text" name = "ticketDescription" [(ngModel)] = "currentTicket.description" #description = "ngModel" class=" form-control" placeholder=" Description" required> -->  
+                 <ckeditor [(ngModel)] = "currentTicket.description"  [(data)] = "currentTicket.description" (change) = "onChange($event)" ></ckeditor>
                 </div>
                 <div class=" form-group">
                     <label>Reporter</label>

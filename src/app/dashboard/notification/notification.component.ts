@@ -77,7 +77,7 @@ export class NotificationComponent implements OnInit {
   }
 
   applyFilter() {
-    this.dataSource.filter = this.searchKey.trim().toLowerCase();
+    this.dataSource.filter = this.searchKey.toString().trim().toLowerCase();
   }
 
   public checkStatus = () => {

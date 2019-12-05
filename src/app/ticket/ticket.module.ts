@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
   declarations: [TicketViewComponent, TicketCreateComponent, TicketEditComponent],
@@ -26,7 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     ]),
     MaterialModule,
     SharedModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CKEditorModule
   ]
 })
 export class TicketModule { }

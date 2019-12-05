@@ -14,8 +14,9 @@
                 </div>
                 <div class=" form-group">
                     <label>Description</label>
-                    <input type="text" name="ticketDescription" [(ngModel)]="ticketDescription" #description="ngModel"
-                        class=" form-control" placeholder=" Description" required>
+                    <!-- <input type="text" name="ticketDescription" [(ngModel)]="ticketDescription" #description="ngModel"
+                        class=" form-control" placeholder=" Description" required> -->
+                    <ckeditor data="" (change) = "onChange($event)" ></ckeditor>
                 </div>
                 <div class=" form-group">
                     <label>Reporter</label>
@@ -55,4 +56,3 @@
     </div>
 </div>
 
-<!-- (click)="upload()" -->

@@ -6,6 +6,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { NotificationsHttpService } from 'src/app/notifications-http.service';
 import { UploadService } from 'src/app/upload.service';
 import { ToastrService } from 'ngx-toastr';
+import { CKEditor4 } from 'ckeditor4-angular';
 
 
 
@@ -170,4 +171,9 @@ export class TicketEditComponent implements OnInit {
       )
     }
   }
+
+  public onChange( event: CKEditor4.EventInfo ) {
+    // console.log( );
+    this.currentTicket.description = event.editor.getData() 
+}
 }
