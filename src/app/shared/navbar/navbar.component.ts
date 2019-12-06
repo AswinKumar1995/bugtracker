@@ -29,6 +29,8 @@ export class NavbarComponent implements OnInit {
   
 
   ngOnInit() {
+
+    //nav bar on top of each page to navigate to all pages
     
     this.userId = Cookie.get("receiverId")
     console.log("new user Id ")
@@ -48,7 +50,7 @@ export class NavbarComponent implements OnInit {
     )
   }
 
-
+//logout functionality
   public logout:any = () => {
     this.AppService.logout().subscribe((apiResponse) => {
       if(apiResponse.status == 200){
@@ -67,10 +69,13 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  // got to specific page
 
   public goToPage(ticketId){
     this.router.navigate(["/ticket",ticketId])
   }
+
+  //change the notification count on click
   public changeBadge():any{
     this.matBadge = 0 ;
     this.notificationHttpService.setNotificationSeen(this.userId).subscribe(

@@ -52,6 +52,7 @@ export class TicketViewComponent implements OnInit {
     
     let ticketId = this._route.snapshot.paramMap.get("ticketId")
     this.currentTicketId = ticketId
+    //extract all user details
     this.appService.getAllUsers().subscribe(
       data => {
         // console.log("All Users Data")
@@ -76,7 +77,7 @@ export class TicketViewComponent implements OnInit {
     this.allUsersObject = { "userName": this.allusersArray, "userId": this.allusersIdArray }
 
 
-
+//get single ticket details to view
     this.ticketHttpService.getSingleTicketInformation(ticketId).subscribe(
       data => {
         this.currentTicket = data["data"]
@@ -146,6 +147,8 @@ export class TicketViewComponent implements OnInit {
 
     }
   }
+
+  // updating watcherlist upon clicking toggle button
   public updateWatcherList():any{
     this.watcherNameArray = [];
     var varUserId = this.allusersIdArray

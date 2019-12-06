@@ -38,7 +38,7 @@ export class DashboardViewComponent implements OnInit {
 
   ngOnInit() {
 
-
+    //Load data into data table
     console.log("Inside ng on it")
     this.checkStatus()
     this.ticketHttpService.getAllTickets().subscribe(
@@ -59,9 +59,7 @@ export class DashboardViewComponent implements OnInit {
       })
 
 
-    // adding filters
-
-
+    // adding filters on all columns
     this.statusFilter.valueChanges
       .subscribe(
         status => {
@@ -95,26 +93,34 @@ export class DashboardViewComponent implements OnInit {
 
   }
 
+  //navigate to view ticket
+
   logData(row) {
     console.log(row);
     console.log(row.ticketId)
     this.router.navigate(["/ticket", row.ticketId])
 
   }
+
+  //navigate to edit ticket
   editData(row) {
     console.log(row);
     console.log(row.ticketId)
     this.router.navigate(["/edit", row.ticketId])
 
   }
+
+  //navigate to create ticket
   createTicket() {
     this.router.navigate(["/create"])
   }
 
+  //navigate to search view
   searchview() {
     this.router.navigate(["/searchView"])
   }
 
+  
   onSearchClear() {
     this.searchKey = "";
     this.applyFilter();
@@ -123,6 +129,8 @@ export class DashboardViewComponent implements OnInit {
   applyFilter() {
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
+
+  //checking authtoken
 
   public checkStatus = () => {
     console.log("checking auth token")
@@ -136,6 +144,7 @@ export class DashboardViewComponent implements OnInit {
     }
   }
 
+  // creating filter to apply on datatable
 
   public createFilter(): (data: any, filter: string) => boolean {
     let filterFunction = function (data, filter): boolean {

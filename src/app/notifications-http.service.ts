@@ -14,12 +14,14 @@ export class NotificationsHttpService {
   constructor(private _http:HttpClient) {
     console.log("nottification http called")
    }
+
+   // get all notifications for that particular user
    public getAllNotificationByUserId(userId):any{
      let myResponse = this._http.get(this.baseUrl+"/"+userId+"/view")
      console.log(myResponse)
      return myResponse
    }
-
+   //mark notification as seen
    public setNotificationSeen(userId):any{
      let myResponse = this._http.get(this.baseUrl+"/"+userId+"/seen")
      console.log(myResponse)
@@ -27,6 +29,7 @@ export class NotificationsHttpService {
    }
 
 
+   // create notification
    public createNotification(notificationData):any{
      let data = []
      let myResponse = this._http.post(this.baseUrl+"/create",notificationData)

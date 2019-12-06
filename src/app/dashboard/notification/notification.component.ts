@@ -28,6 +28,7 @@ export class NotificationComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private router: Router, public ticketHttpService: TicketHttpService) { }
 
 
+  // shows you the search view part
 
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = ['status', 'title', 'reporter', "created", "actions"];
@@ -61,12 +62,14 @@ export class NotificationComponent implements OnInit {
     this.router.navigate(["/ticket", row.ticketId])
 
   }
+  //edit the ticket
   editData(row) {
     console.log(row);
     console.log(row.ticketId)
     this.router.navigate(["/edit", row.ticketId])
 
   }
+  //create the ticket
   createTicket() {
     this.router.navigate(["/create"])
   }
@@ -75,7 +78,7 @@ export class NotificationComponent implements OnInit {
     this.searchKey = "";
     this.applyFilter();
   }
-
+ //apply filters on table
   applyFilter() {
     this.dataSource.filter = this.searchKey.toString().trim().toLowerCase();
   }

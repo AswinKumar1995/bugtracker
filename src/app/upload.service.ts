@@ -16,7 +16,7 @@ export class UploadService {
 
   constructor() { }
 
-
+//upload file to aws s3 and get the stored link
   uploadFile(file):any {
     const contentType = file.type;
     const bucket = new S3(
