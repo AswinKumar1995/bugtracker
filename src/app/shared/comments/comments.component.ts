@@ -45,6 +45,9 @@ export class CommentsComponent implements OnInit {
     )
   }
 
+  //shared module
+
+  // create comment method
 
   public createComment(): any {
     console.log("ticket id")

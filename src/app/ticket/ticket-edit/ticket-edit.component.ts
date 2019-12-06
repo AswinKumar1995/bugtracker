@@ -6,6 +6,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { NotificationsHttpService } from 'src/app/notifications-http.service';
 import { UploadService } from 'src/app/upload.service';
 import { ToastrService } from 'ngx-toastr';
+import { CKEditor4 } from 'ckeditor4-angular';
 
 
 
@@ -48,9 +49,7 @@ export class TicketEditComponent implements OnInit {
     let myTicketId = this._route.snapshot.paramMap.get("ticketId");
     console.log("Extracted ticket Id");
     console.log(myTicketId);
-   
-
-
+   //extracting all user details
     this.appService.getAllUsers().subscribe(
       data => {
         this.allUsers = data["data"]
@@ -66,6 +65,7 @@ export class TicketEditComponent implements OnInit {
         console.log(error)
       }
     )
+    //extracting ticket details to edit
     this.ticketHttpService.getSingleTicketInformation(myTicketId).subscribe(
 
       data => {
@@ -88,7 +88,7 @@ export class TicketEditComponent implements OnInit {
     )
 
   }
-
+ // saving the changes in database
 
   public editThisTicket(): any {
     
@@ -120,7 +120,7 @@ export class TicketEditComponent implements OnInit {
 
   
 
-  
+  // checking authtoken
 
   public checkStatus = () => {
     if (Cookie.get('authToken') === undefined || Cookie.get('authToken') === '') {
@@ -131,6 +131,7 @@ export class TicketEditComponent implements OnInit {
       return true;
     }
   }
+  //extracting username with user id
   public getName(Id): any {
     for (let user of this.userAndIdArray) {
       if (user[1] === Id) {
@@ -138,6 +139,8 @@ export class TicketEditComponent implements OnInit {
       }
     }
   }
+
+  //used for uploading the files to aws s3
 
   public upload() :any {
    // this.toastr.warning("Please wait the file is loading..")
@@ -152,11 +155,13 @@ export class TicketEditComponent implements OnInit {
     this.selectedFiles = event.target.files;
     }
 
+    // create notification
+
   public checkChangesInData(oldData): any {
     console.log("Old Data")
     console.log(oldData)
     let userName = Cookie.get("receiverName")
-    let notification = "Ticket ID "+  oldData["ticketId"] +  "is updated by " + userName
+    let notification = "Ticket ID "+  oldData["ticketId"] +  " is updated by " + userName
     let sendUsersArray = [...new Set(oldData["watcherlist"].concat( [oldData["reporterId"]].concat([oldData["assigneeId"]])))]
     for (let UserId of sendUsersArray) {
       let notificationData = { "notification": notification, "userId": UserId,"ticketId":oldData["ticketId"] }
@@ -170,4 +175,9 @@ export class TicketEditComponent implements OnInit {
       )
     }
   }
+// check changes in text editor
+  public onChange( event: CKEditor4.EventInfo ) {
+    // console.log( );
+    this.currentTicket.description = event.editor.getData() 
+}
 }

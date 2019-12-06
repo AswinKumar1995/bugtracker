@@ -1,23 +1,26 @@
 <app-navbar></app-navbar>
 <div class="container">
+    <br>
     <div>
-        <div class="com-div">
-            <app-comments></app-comments>
-        </div>
-        <div class="des-div">
-            <div class="main-div card">
-                <mat-card class="z-depth center" flex="60">
+        <div class="col-md-6">
+            <div class="card">
+                <mat-card class="z-depth" >
                     <div clas="card-header">
                         <mat-card-title>
-                            {{ currentTitle }}
+                           Title :  {{ currentTitle }}
                         </mat-card-title>
                     </div>
                     <mat-card-content>
                         <mat-list>
-                            <mat-list-item>
-                                Description : {{currentDescription}}
+                            <mat-list-item style="text-decoration: underline;" >
+                                Description 
                             </mat-list-item>
-                            <mat-list-item>
+                            <mat-list-item  >
+                                <div [innerHtml] = "currentDescription"></div>
+                            </mat-list-item>
+                            <hr>
+                            
+                            <mat-list-item >
                                 Assignee : {{this.currentTicket.assignee}}
                             </mat-list-item>
                             <mat-list-item>
@@ -56,6 +59,9 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
+        </div>
+        <div class="col-md-6">
+            <app-comments></app-comments>
         </div>
     </div>
 </div>

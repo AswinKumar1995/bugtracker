@@ -14,6 +14,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {HttpClientModule } from '@angular/common/http';
 import { TicketHttpService } from './ticket-http.service';
 import { CommentHttpService } from './comment-http.service';
+import {CKEditorModule} from 'ckeditor4-angular';
 
 
 
@@ -39,7 +40,7 @@ import { CommentHttpService } from './comment-http.service';
       {path:'*',component:LoginComponent},
       {path:'**',component:LoginComponent}
     ]),
-  
+    CKEditorModule
   ],
   providers: [TicketHttpService,CommentHttpService],
   bootstrap: [AppComponent]

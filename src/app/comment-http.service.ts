@@ -15,12 +15,13 @@ export class CommentHttpService {
   constructor(private _http:HttpClient) { 
     console.log("comment http called")
   }
+  //extract comments for that ticket
   public getSingleTicketComments(currentTicketId):any{
     let myResponse = this._http.get(this.baseUrl+"/"+currentTicketId+"/view")
     console.log(myResponse)
     return myResponse
   }
-
+//create comments and save
   public createComment(commentData):any{
     let data = {}
     let myResponse = this._http.post(this.baseUrl+"/create",commentData)
